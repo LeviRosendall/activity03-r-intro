@@ -1,6 +1,6 @@
 ---
 title: "Activity 3"
-author: "Levi Rosendall"
+author: "Levi D Rosendall"
 output: github_document
 ---
 

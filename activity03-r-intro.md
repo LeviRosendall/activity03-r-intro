@@ -1,6 +1,6 @@
 Activity 3
 ================
-Levi Rosendall
+Levi D Rosendall
 
 Today you will be creating and manipulating vectors, lists, and data
 frames to uncover a top secret message.
