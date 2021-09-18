@@ -30,60 +30,67 @@ Create three vectors that contain: 1) the lower case letters, 2) the lower case 
 
 ```{r}
 lower_case <- c("a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z")
+lower_case
 
-upper_case <- c("A", "B", "C", "D", "E", "F", "G", "H" "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z")
+upper_case <- c("A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z")
 
-punctuation <- c(".", ",", "!", "?", "'", """, "(", ")", " ", "-", ";", ":")
+punctuation <- c(".", ",", "!", "?", "'", "\"", "(", ")", " ", "-", ";", ":")
+punctuation
 ```
 
 Comment on what you noticed about the errors and how you used this information to correct the issues.
 
-**Response**:
+**Response**:The first error was in uppercase, it had a double "
+The second issue was in punctuation and for " to show up you have to do \"
 
 
 Make one long vector containing all the symbols.
 
 ```{r}
-my_symbols <- cbind(lower_case, upper_case, punctuation)
+my_symbols <- c(lower_case, upper_case, punctuation)
+my_symbols
 ```
 
 Comment on what you noticed about the errors and how you used this information to correct the issues.
 
-**Response**:
+**Response**: cbind makes each vector a column, whereas c() just makes it one long vector.
 
 
 Turn the `my_symbols` vector into a data frame, with the variable name "Symbol".
 
 ```{r}
-my_symbols <- dataframe(my_symbols)
-names(my_symbols) = Symbol
+my_symbols <- data.frame(my_symbols)
+names(my_symbols) =  "Symbol"
+my_symbols
 ```
 
 Comment on what you noticed about the errors and how you used this information to correct the issues.
 
-**Response**:
+**Response**: It requires Symbol to be a string
 
 
 Find the total number of symbols we have in our data frame.  
 
 ```{r}
-len <- length(my_symbols)
+len <- nrow(my_symbols)
+len
 ```
 
 Comment on what you noticed about the errors and how you used this information to correct the issues.
 
-**Response**:
+**Response**: length() gives the number of variables, while nrow() gives the number of observations.
 
 
 5. Create a new variable in your dataframe that assigns a number to each symbol.
 
 ```{r}
-my_symbols%Num <- 1:len
+my_symbols$Num <- 1:len
+my_symbols
 ```
 
 Comment on what you noticed about the errors and how you used this information to correct the issues.
 
-**Response**:
+**Response**: $ instead of % when accessing variables. 
 
 
 
@@ -112,7 +119,10 @@ Write your own code to complete the steps below.
 4. Square every number.
 
 ```{r}
-
+top_secret <- top_secret + 14
+top_secret <- (top_secret*18)-257
+top_secret <- exp(top_secret)
+top_secret <- top_secret*top_secret
 ```
 
 **HQ UPDATE:** Headquarters has informed you that at this stage of decoding, there should be 496 numbers in the secret message that are below 17.
@@ -125,6 +135,17 @@ Write your own code to complete the steps below.
 10. Turn your matrix back into a vector.
 
 ```{r}
+sum(top_secret<17)
+sum(top_secret)
+top_secret_matrix <- matrix(data=top_secret, ncol=5)
+evens <- seq(2, 502, 2)
+top_secret_matrix[,1] <- top_secret_matrix[,1]-evens
+top_secret_matrix[18:24,3] <- top_secret_matrix[18:24,3]-100
+top_secret_matrix[,4:5] <- top_secret_matrix[,4:5]*2
+top_secret <- c(top_secret_matrix)
+top_secret
+
+
 
 ```
 
@@ -135,10 +156,22 @@ Write your own code to complete the steps below.
 13. Replace all instances of the number 39 with 20.
 
 ```{r}
-
+top_secret[38:465] <- sqrt(top_secret[38:465])
+top_secret <- round(top_secret, 0)
+top_secret[top_secret == 39] <- 20
 ```
 
 **HQ UPDATE:** Headquarters has informed you that your final message should have 421 even numbers.
+
+```{r}
+x <- 0
+for (n in top_secret){
+  if (n %% 2 == 0){
+    x <- x+1
+  } 
+}
+x
+```
 
 ![](README-img/noun_pause.png) **Planned Pause Point**: If things made sense, feel free to continue on while you wait. Otherwise, contact your instructor to have them verify your work.
 
@@ -156,7 +189,7 @@ Google the first line of this message, if you do not recognize it, to see what i
 
 Comment on what you noticed about the activity as a whole.
 
-**Response**:
+**Response**: The activity used a lot of different functions to modify vectors and matrices. The biggest thing that I noticed was the need to store evey function you did.
 
 
 
